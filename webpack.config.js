@@ -40,7 +40,7 @@ module.exports = {
             // command. Default arguments are `--verbose`.
             args: '--log-level warn',
             // Default arguments are `--typescript --target browser --mode normal`.
-            extraArgs: '--no-typescript --target web',
+            extraArgs: '--target web',
 
             // Optional array of absolute paths to directories, changes to which
             // will trigger the build.
