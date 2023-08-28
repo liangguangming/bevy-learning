@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bevy demo</title>
+  <style>
+    .container {
+      height: 100vh;
+      display: flex;
+      background-color: azure;
+    }
+
+    .red {
+      background-color: red;
+    }
+
+    .blue {
+      background-color: blue;
+    }
+
+    .left,
+    .right {
+      flex: 0 0 auto;
+      width: 200px;
+      height: 100%;
+    }
+
+    .mid {
+      flex: 1 1 auto;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left"></div>
+    <div class="mid">
+      <canvas id="xspiral"></canvas>
+    </div>
+    <div class="right"></div>
+  </div>
+  <script src="event.js"></script>
+  <!-- <script src="index.js"></script> -->
+  <!-- <script src="bevy-demo.js"></script> -->
+  <script>
+    // Module._main();
+  </script>
+</body>
+</html>

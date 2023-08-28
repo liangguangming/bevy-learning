@@ -1,0 +1,17 @@
+{
+  "name": "bevy-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "梁广明 <gmliangd@163.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "webpack serve"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "html-webpack-plugin": "^5.5.3",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  }
+}
