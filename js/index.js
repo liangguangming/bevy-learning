@@ -9,7 +9,7 @@ init().then((instance) => {
       throw error;
     }
   }
-  // resizeCanvas();
+  resizeCanvas();
 })
 
 // import * as wasm "./bevy-demo";

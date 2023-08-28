@@ -5,8 +5,8 @@ const padding = 16;
 function resizeCanvas() {
   const win = window;
 
-  const width = win.innerWidth - 2 * 200 - padding;
-  const height = win.innerHeight;
+  const width = win.innerWidth - 16;
+  const height = win.innerHeight - 16;
 
   console.log("width: ", width, "height: ", height);
 
