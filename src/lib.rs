@@ -1,4 +1,4 @@
-use bevy::{prelude::*, log::{self, LogPlugin}};
+use bevy::{prelude::*, log::{self, LogPlugin}, window::PresentMode};
 use wasm_bindgen::prelude::*;
 
 fn hello_world_system() {
@@ -13,19 +13,13 @@ pub fn main() {
             level: bevy::log::Level::DEBUG,
         }).set(WindowPlugin {
             primary_window: Some(Window {
+                present_mode: PresentMode::AutoNoVsync,
                 canvas: Some(String::from("#xspiral")),
+                resizable: true,
                 ..default()
             }),
             ..default()
         }))
-        // .add_systems(Update, &hello_world_system)
+        .add_systems(Update, &hello_world_system)
         .run();
 }
-
-// fn main() {
-//     // print!("hello wasm32-unknown-emscripten");
-//     for i in 0..100 {
-//         // print!("{}",i);
-//         let b = i;
-//     }
-// }
