@@ -10,7 +10,7 @@ const wasm = path.resolve(__dirname, "pkg/bevy_demo_bg.wasm");
 module.exports = {
   mode: "development",
   entry: {
-    index: "./js/index.js"
+    index: "./web/index.js"
   },
   output: {
     path: dist,
