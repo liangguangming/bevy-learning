@@ -3,7 +3,7 @@ import { resizeCanvas } from "./event";
 
 init().then((wasm) => {
   // 注册接收 wasm 信息的回调
-  instance.onMessage((msg) => {
+  instance.on_message((msg) => {
     console.log("cb -- receive msg from wasm: ", msg);
   });
   try {
@@ -18,7 +18,7 @@ init().then((wasm) => {
   console.log("finish wasm_main");
   console.log("1 + 2 = ", instance.add(1, 2));
   instance.send_msg_to_wasm("hello rust");
-  const xspiralObj = new instance.Struct_Obj("Xspiral", 23);
+  const xspiralObj = new instance.StructObj("Xspiral", 23);
   console.log("xspiralObj: ", xspiralObj.get_name(), xspiralObj.get_value());
 
   xspiralObj.set_name("spiral");

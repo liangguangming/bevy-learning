@@ -10,9 +10,9 @@ pub fn add(a: u32, b: u32) -> u32 {
 
 // 外部注册信息回调
 #[wasm_bindgen]
-pub fn onMessage(jsCallback: JsValue) {
+pub fn on_message(js_callback: JsValue) {
   unsafe {
-    JS_RECEIVE_MSG_CALLBACK = jsCallback;
+    JS_RECEIVE_MSG_CALLBACK = js_callback;
   }
 }
 
@@ -27,14 +27,14 @@ pub fn send_msg_to_wasm(s: &str) {
 }
 
 pub fn send_msg_to_js(s: &str) {
-  receive_msg_from_wasm(s);
+  receive_msg_from_wasm(s); // 内部的 js 接收信息
   unsafe {
-    if (JS_RECEIVE_MSG_CALLBACK.is_function()) {
-      let cb = Function::try_from(&JS_RECEIVE_MSG_CALLBACK);
+    if JS_RECEIVE_MSG_CALLBACK.is_function() {
+      let cb = JS_RECEIVE_MSG_CALLBACK.dyn_ref::<Function>();
       match cb {
           None => { print!("None") },
           Some(f) => {
-            f.call1(&JsValue::null(), &JsValue::from_str(s));
+            let _ = f.call1(&JsValue::null(), &JsValue::from_str(s)); // 外部的 js 接收信息
           }
       }
     }
@@ -49,17 +49,17 @@ pub fn receive_msg(s: &str) {
 
 // 结构体
 #[wasm_bindgen]
-pub struct Struct_Obj {
+pub struct StructObj {
   name: String,
   value: u32
 }
 
 #[wasm_bindgen]
-impl Struct_Obj {
+impl StructObj {
 
     #[wasm_bindgen(constructor)]
-    pub fn new(n: &str, v: u32) -> Struct_Obj {
-      Struct_Obj { name: n.into(), value: v }
+    pub fn new(n: &str, v: u32) -> StructObj {
+      StructObj { name: n.into(), value: v }
     }
 
     pub fn set_name(&mut self, n: String) {
