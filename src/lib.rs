@@ -1,10 +1,10 @@
-use bridge::send_msg_to_js;
 use wasm_bindgen::prelude::*;
 
 pub mod main;
 pub mod bridge;
 
 use crate::main::*;
+use bridge::message::send_msg_to_js;
 
 #[wasm_bindgen]
 pub fn wasm_main() {
