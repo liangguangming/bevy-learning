@@ -1,25 +1,24 @@
 const path = require("path");
 const fs = require("fs");
-const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WasmPackPlugin = require("@wasm-tool/wasm-pack-plugin");
 
-const dist = path.resolve(__dirname, "public");
-const wasm = path.resolve(__dirname, "pkg/bevy_demo_bg.wasm");
+const public = path.resolve(__dirname, "public");
 
-module.exports = {
-  mode: "development",
+const isDev = process.env.NODE_ENV === "develop";
+
+const config = {
+  mode: isDev? "development" : "production",
   entry: {
     index: "./web/index.js"
   },
   output: {
-    path: dist,
+    path: path.resolve(__dirname, "dist"),
     filename: "[name].js"
   },
-  devtool: "source-map",
   devServer: {
     static: {
-      directory: dist,
+      directory: public,
     },
   },
   experiments: {
@@ -67,16 +66,17 @@ module.exports = {
             //
             // the mode `development` makes `wasm-pack` build in `debug` mode.
             // the mode `production` makes `wasm-pack` build in `release` mode.
-            forceMode: "development",
+            forceMode: isDev ? "development" : "production",
 
             // Controls plugin output verbosity, either 'info' or 'error'.
             // Defaults to 'info'.
             // pluginLogLevel: 'info'
-    }),
-    new CopyPlugin({
-      patterns: [
-        { from: wasm, to: dist },
-      ]
-    }),
+    })
   ]
 };
+
+if (isDev) {
+  config.devtool = "source-map";
+}
+
+module.exports = config;

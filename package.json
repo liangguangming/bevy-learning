@@ -5,11 +5,13 @@
   "author": "梁广明 <gmliangd@163.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack serve"
+    "dev": "cross-env NODE_ENV=develop webpack serve",
+    "build": "webpack build"
   },
   "devDependencies": {
     "@wasm-tool/wasm-pack-plugin": "^1.7.0",
     "copy-webpack-plugin": "^11.0.0",
+    "cross-env": "^7.0.3",
     "html-webpack-plugin": "^5.5.3",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
