@@ -303,6 +303,7 @@ version = "0.1.0"
 dependencies = [
  "bevy",
  "js-sys",
+ "once_cell",
  "wasm-bindgen",
 ]
 
