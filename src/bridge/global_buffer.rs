@@ -3,6 +3,8 @@ use std::sync::Mutex;
 use std::collections::HashMap;
 use once_cell::sync::Lazy;
 
+use super::buffer_meta::BufferMeta;
+
 pub struct BufferStorage {
   pub buffer_map: HashMap<String, Vec<u8>>
 }
@@ -19,25 +21,6 @@ pub static GLOBAL_BUFFER_STORAGE: Lazy<Mutex<BufferStorage>> = Lazy::new(|| {
   let buffer_storage = BufferStorage::new();
   Mutex::new(buffer_storage)
 });
-
-#[wasm_bindgen]
-pub struct BufferMeta {
-  ptr: *const u8,
-  len: usize
-}
-
-#[wasm_bindgen]
-impl BufferMeta {
-    #[wasm_bindgen(getter)]
-    pub fn ptr(&self) -> *const u8 {
-        self.ptr
-    }
-
-    #[wasm_bindgen(getter)]
-    pub fn len(&self) -> usize {
-        self.len
-    }
-}
 
 #[wasm_bindgen]
 pub fn new_buffer(key: String, len: usize) -> *const u8 {

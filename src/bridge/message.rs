@@ -43,8 +43,6 @@ pub fn send_msg_to_js(s: &str) {
       }
     }
   }
-
-  
 }
 
 

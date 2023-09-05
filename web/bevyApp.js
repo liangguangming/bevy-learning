@@ -13,6 +13,7 @@ export class BevyApp {
     this.isReady = new Promise((resolve) => {
       init().then((wasm) => {
         this.wasm = wasm;
+        instance.set_wasm_instance(wasm);
         // 注册接收 wasm 信息的回调
         instance.on_message((msg) => {
           this.messageCallbackMap.forEach((value, cb) => {
@@ -79,8 +80,12 @@ export class BevyApp {
     return buffer;
   }
 
-  deleteBuffer(filename) {
-    instance.remove_buffer(filename)
+  /**
+   * 删除 buffer
+   * @param {String} key
+   */
+  deleteBuffer(key) {
+    instance.remove_buffer(key)
   }
 }
 
