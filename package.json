@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "cross-env NODE_ENV=develop webpack serve",
-    "build": "webpack build"
+    "build": "cross-env RUSTFLAGS=--cfg=web_sys_unstable_apis wasm-pack build --release --target web"
   },
   "devDependencies": {
     "@wasm-tool/wasm-pack-plugin": "^1.7.0",

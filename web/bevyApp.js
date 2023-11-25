@@ -1,5 +1,4 @@
 import init, * as instance from "../pkg/bevy_demo";
-import { resizeCanvas } from "./event";
 
 export class BevyApp {
   constructor() {
@@ -27,7 +26,6 @@ export class BevyApp {
             throw error;
           }
         }
-        resizeCanvas();
         resolve();
       });
     });
